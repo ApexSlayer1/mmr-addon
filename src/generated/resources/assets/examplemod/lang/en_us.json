@@ -1,0 +1,7 @@
+{
+  "block.examplemod.example_machine": "Example Machine",
+  "block.examplemod.example_offset_machine": "Example Offset Machine",
+  "block.examplemod.example_offset_scale_machine": "Example Offset Scale Machine",
+  "block.examplemod.example_scale_machine": "Example Scale Machine",
+  "block.examplemod.example_test": "Test"
+}

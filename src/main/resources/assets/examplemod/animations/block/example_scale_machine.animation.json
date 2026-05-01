@@ -1,0 +1,16 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.example_scale_machine.idle": {
+      "loop": true,
+      "bones": {
+        "rotor": {
+          "rotation": {
+            "0.0": [0, 0, 0],
+            "1.0": [0, 360, 0]
+          }
+        }
+      }
+    }
+  }
+}

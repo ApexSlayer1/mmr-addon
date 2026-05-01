@@ -28,6 +28,12 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 base {
@@ -118,6 +124,19 @@ configurations {
 }
 
 dependencies {
+    implementation "curse.maven:modular-machinery-reborn-1083840:7868265"
+    implementation "curse.maven:athena-841890:7097200"
+    implementation "curse.maven:geckolib-388172:7707149"
+    runtimeOnly "curse.maven:modular-machinery-reborn-mekanism-1131856:7731276"
+    runtimeOnly "curse.maven:modular-machinery-reborn-ars-nouveau-1132269:7731301"
+    runtimeOnly "curse.maven:experiencelib-1156551:7705470"
+    runtimeOnly "curse.maven:mekanism-268560:7904058"
+    runtimeOnly "curse.maven:ars-nouveau-401955:7764018"
+    runtimeOnly "curse.maven:curios-309927:6529130"
+    runtimeOnly "curse.maven:kubejs-238086:7278501"
+    runtimeOnly "curse.maven:rhino-416294:7104526"
+
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
