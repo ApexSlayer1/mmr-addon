@@ -1,9 +1,12 @@
 package com.example.examplemod.client;
 
+import com.example.examplemod.block.AnimatedMachineBlock;
 import com.example.examplemod.block.entity.AnimatedMachineBlockEntity;
+import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -17,6 +20,9 @@ public class AnimatedMachineBlockRenderer extends GeoBlockRenderer<AnimatedMachi
 
     @Override
     public void preRender(PoseStack poseStack, AnimatedMachineBlockEntity animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int renderColor) {
+        poseStack.translate(0.5F, 0.0F, 0.5F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(yRotation(animatable)));
+        poseStack.translate(-0.5F, 0.0F, -0.5F);
         poseStack.translate(
                 animatable.definition().renderOffset().x,
                 animatable.definition().renderOffset().y,
@@ -52,5 +58,15 @@ public class AnimatedMachineBlockRenderer extends GeoBlockRenderer<AnimatedMachi
         Vec3 size = blockEntity.definition().renderSize();
         Vec3 scale = blockEntity.definition().renderScale();
         return new Vec3(size.x * scale.x, size.y * scale.y, size.z * scale.z);
+    }
+
+    private static float yRotation(AnimatedMachineBlockEntity blockEntity) {
+        Direction facing = blockEntity.getBlockState().getValue(AnimatedMachineBlock.FACING);
+        return switch (facing) {
+            case EAST -> 270.0F;
+            case SOUTH -> 180.0F;
+            case WEST -> 90.0F;
+            default -> 0.0F;
+        };
     }
 }
