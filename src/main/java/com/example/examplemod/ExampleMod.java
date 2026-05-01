@@ -3,10 +3,13 @@ package com.example.examplemod;
 import com.example.examplemod.client.AnimatedMachineBlockRenderer;
 import com.example.examplemod.data.ModAssetGenerator;
 import com.example.examplemod.registry.ModBlockEntities;
+import com.example.examplemod.registry.ModCasingBlockEntities;
 import com.example.examplemod.registry.ModBlocks;
+import com.example.examplemod.registry.ModCasings;
+import com.example.examplemod.registry.ModCreativeTabs;
 import com.mojang.logging.LogUtils;
+import es.degrassi.mmreborn.client.ModularMachineryRebornClient;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -14,7 +17,6 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import org.slf4j.Logger;
 
 @Mod(ExampleMod.MODID)
@@ -25,16 +27,9 @@ public class ExampleMod {
     public ExampleMod(IEventBus modEventBus, ModContainer modContainer) {
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-
-        modEventBus.addListener(this::addCreative);
-    }
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() != CreativeModeTabs.BUILDING_BLOCKS) {
-            return;
-        }
-
-        ModBlocks.all().forEach(registration -> event.accept(registration.item()));
+        ModCasings.register(modEventBus);
+        ModCasingBlockEntities.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
     }
 
     public static ResourceLocation id(String path) {
@@ -64,6 +59,22 @@ public class ExampleMod {
         public static void registerRenderers(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers event) {
             ModBlockEntities.all().forEach(entry ->
                     event.registerBlockEntityRenderer(entry.type().get(), context -> new AnimatedMachineBlockRenderer(entry.type().get())));
+        }
+
+        @SubscribeEvent
+        public static void registerBlockColors(net.neoforged.neoforge.client.event.RegisterColorHandlersEvent.Block event) {
+            net.minecraft.world.level.block.Block[] coloredBlocks = ModCasings.coloredBlocks();
+            if (coloredBlocks.length > 0) {
+                event.register(ModularMachineryRebornClient::blockColor, coloredBlocks);
+            }
+        }
+
+        @SubscribeEvent
+        public static void registerItemColors(net.neoforged.neoforge.client.event.RegisterColorHandlersEvent.Item event) {
+            net.minecraft.world.item.Item[] coloredItems = ModCasings.coloredItems();
+            if (coloredItems.length > 0) {
+                event.register(ModularMachineryRebornClient::itemColor, coloredItems);
+            }
         }
     }
 }

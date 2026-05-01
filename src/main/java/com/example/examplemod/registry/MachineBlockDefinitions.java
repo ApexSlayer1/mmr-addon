@@ -25,7 +25,7 @@ public final class MachineBlockDefinitions {
                     .build(),
 
             quickMachine("example_scale_machine", "Example Scale Machine", "item/example_scale_machine", 1.75D, "animation.example_scale_machine.idle", 0.5D),
-            
+
 
             quickMachine("example_test", "Test", "item/example_test", 5.0D, "spin", 0.2D)
 

@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "modular_machinery_reborn:casing_plain",
+    "modular_machinery_reborn:casing_firebox",
+    "modular_machinery_reborn:casing_gearbox",
+    "modular_machinery_reborn:casing_vent",
+    "modular_machinery_reborn:casing_circuitry",
+    "examplemod:example_plain_casing",
+    "examplemod:example_firebox_casing",
+    "examplemod:example_gearbox_casing",
+    "examplemod:example_vent_casing",
+    "examplemod:example_circuitry_casing"
+  ]
+}

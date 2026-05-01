@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "examplemod:spruce_planks_vent_casing"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

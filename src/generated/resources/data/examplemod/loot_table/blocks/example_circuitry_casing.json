@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "examplemod:example_offset_scale_machine"
+          "name": "examplemod:example_circuitry_casing"
         }
       ],
       "rolls": 1

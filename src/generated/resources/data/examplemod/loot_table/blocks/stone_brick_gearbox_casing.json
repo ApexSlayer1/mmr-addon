@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "examplemod:stone_brick_gearbox_casing"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

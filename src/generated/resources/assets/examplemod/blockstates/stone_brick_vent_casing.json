@@ -1,0 +1,24 @@
+{
+  "athena:loader": "modular_machinery_reborn:casing",
+  "connect_to": {
+    "type": "tag",
+    "tag": "examplemod:casing_connect/reinforced"
+  },
+  "ctm_textures": {
+    "center": "examplemod:block/casing/stone_brick_corners",
+    "empty": "examplemod:block/casing/stone_brick_empty",
+    "horizontal": "examplemod:block/casing/stone_brick_horizontal",
+    "ov_center": "modular_machinery_reborn:block/casing_reinforced_corners",
+    "ov_horizontal": "modular_machinery_reborn:block/casing_reinforced_horizontal",
+    "ov_particle": "modular_machinery_reborn:block/casing_reinforced",
+    "ov_vertical": "modular_machinery_reborn:block/casing_reinforced_vertical",
+    "overlay": "modular_machinery_reborn:block/overlay_vent",
+    "particle": "examplemod:block/casing/stone_brick",
+    "vertical": "examplemod:block/casing/stone_brick_vertical"
+  },
+  "variants": {
+    "": {
+      "model": "minecraft:block/air"
+    }
+  }
+}

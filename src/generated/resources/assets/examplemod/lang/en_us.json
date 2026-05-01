@@ -1,7 +1,23 @@
 {
+  "block.examplemod.example_circuitry_casing": "Example Circuitry Casing",
+  "block.examplemod.example_firebox_casing": "Example Firebox Casing",
+  "block.examplemod.example_gearbox_casing": "Example Machine Gearbox Casing",
   "block.examplemod.example_machine": "Example Machine",
   "block.examplemod.example_offset_machine": "Example Offset Machine",
-  "block.examplemod.example_offset_scale_machine": "Example Offset Scale Machine",
+  "block.examplemod.example_plain_casing": "Example Plain Casing",
   "block.examplemod.example_scale_machine": "Example Scale Machine",
-  "block.examplemod.example_test": "Test"
+  "block.examplemod.example_test": "Test",
+  "block.examplemod.example_vent_casing": "Example Machine Vent Casing",
+  "block.examplemod.spruce_planks_circuitry_casing": "spruce Circuitry Casing",
+  "block.examplemod.spruce_planks_firebox_casing": "spruce Firebox Casing",
+  "block.examplemod.spruce_planks_gearbox_casing": "spruce Machine Gearbox Casing",
+  "block.examplemod.spruce_planks_reinforced_casing": "spruce Reinforced Casing",
+  "block.examplemod.spruce_planks_vent_casing": "spruce Machine Vent Casing",
+  "block.examplemod.stone_brick_circuitry_casing": "Stone Brick Circuitry Casing",
+  "block.examplemod.stone_brick_firebox_casing": "Stone Brick Firebox Casing",
+  "block.examplemod.stone_brick_gearbox_casing": "Stone Brick Machine Gearbox Casing",
+  "block.examplemod.stone_brick_reinforced_casing": "Stone Brick Reinforced Casing",
+  "block.examplemod.stone_brick_vent_casing": "Stone Brick Machine Vent Casing",
+  "itemGroup.examplemod.casings": "Casings",
+  "itemGroup.examplemod.machine_blocks": "Machine Blocks"
 }
