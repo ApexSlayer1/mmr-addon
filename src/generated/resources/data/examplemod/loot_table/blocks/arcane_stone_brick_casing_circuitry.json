@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "examplemod:arcane_stone_brick_casing_circuitry"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

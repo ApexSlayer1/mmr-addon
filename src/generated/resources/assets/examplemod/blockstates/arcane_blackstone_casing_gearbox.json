@@ -1,0 +1,24 @@
+{
+  "athena:loader": "modular_machinery_reborn:casing",
+  "connect_to": {
+    "type": "tag",
+    "tag": "examplemod:casing_connect/arcane"
+  },
+  "ctm_textures": {
+    "center": "examplemod:block/casing/blackstone/blackstone_corners",
+    "empty": "examplemod:block/casing/blackstone/blackstone_empty",
+    "horizontal": "examplemod:block/casing/blackstone/blackstone_horizontal",
+    "ov_center": "examplemod:block/frame/arcane/arcane_corners",
+    "ov_horizontal": "examplemod:block/frame/arcane/arcane_horizontal",
+    "ov_particle": "examplemod:block/frame/arcane/arcane_particle",
+    "ov_vertical": "examplemod:block/frame/arcane/arcane_vertical",
+    "overlay": "modular_machinery_reborn:block/overlay_gearbox",
+    "particle": "examplemod:block/casing/blackstone/blackstone",
+    "vertical": "examplemod:block/casing/blackstone/blackstone_vertical"
+  },
+  "variants": {
+    "": {
+      "model": "minecraft:block/air"
+    }
+  }
+}

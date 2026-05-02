@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "examplemod:plain_mud_brick_casing_circuitry"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

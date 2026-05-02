@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "examplemod:reinforced_stone_brick_casing_firebox"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

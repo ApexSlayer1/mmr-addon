@@ -6,17 +6,40 @@ import java.util.stream.Stream;
 import net.minecraft.resources.ResourceLocation;
 
 public record CasingFamilyDefinition(
-        String idPrefix,
-        String displayPrefix,
+        String baseId,
+        String baseDisplayName,
+        String variantIdPrefix,
+        String variantDisplayPrefix,
         ResourceLocation baseTexture,
         CasingFrameType frameType,
         boolean colored
 ) {
     public CasingFamilyDefinition {
-        Objects.requireNonNull(idPrefix, "idPrefix");
-        Objects.requireNonNull(displayPrefix, "displayPrefix");
+        Objects.requireNonNull(baseId, "baseId");
+        Objects.requireNonNull(baseDisplayName, "baseDisplayName");
+        Objects.requireNonNull(variantIdPrefix, "variantIdPrefix");
+        Objects.requireNonNull(variantDisplayPrefix, "variantDisplayPrefix");
         Objects.requireNonNull(baseTexture, "baseTexture");
         Objects.requireNonNull(frameType, "frameType");
+    }
+
+    public static CasingFamilyDefinition of(
+            String baseId,
+            String baseDisplayName,
+            String variantIdPrefix,
+            String variantDisplayPrefix,
+            ResourceLocation baseTexture,
+            CasingFrameType frameType
+    ) {
+        return new CasingFamilyDefinition(
+                baseId,
+                baseDisplayName,
+                variantIdPrefix,
+                variantDisplayPrefix,
+                baseTexture,
+                frameType,
+                false
+        );
     }
 
     public static CasingFamilyDefinition fromVariant(
@@ -27,13 +50,20 @@ public record CasingFamilyDefinition(
     ) {
         String idSuffix = "_" + frameType.baseIdSuffix();
         String displaySuffix = " " + frameType.baseDisplayName();
-        String idPrefix = variantId.endsWith(idSuffix)
+        String variantIdPrefix = variantId.endsWith(idSuffix)
                 ? variantId.substring(0, variantId.length() - idSuffix.length())
                 : variantId;
-        String displayPrefix = variantDisplayName.endsWith(displaySuffix)
+        String variantDisplayPrefix = variantDisplayName.endsWith(displaySuffix)
                 ? variantDisplayName.substring(0, variantDisplayName.length() - displaySuffix.length())
                 : variantDisplayName;
-        return new CasingFamilyDefinition(idPrefix, displayPrefix, baseTexture, frameType, false);
+        return of(
+                variantId,
+                variantDisplayName,
+                variantIdPrefix,
+                variantDisplayPrefix,
+                baseTexture,
+                frameType
+        );
     }
 
     public List<CasingDefinition> expand(List<CasingOverlayType> overlayTypes) {
@@ -44,6 +74,14 @@ public record CasingFamilyDefinition(
     }
 
     public CasingFamilyDefinition color() {
-        return new CasingFamilyDefinition(idPrefix, displayPrefix, baseTexture, frameType, true);
+        return new CasingFamilyDefinition(
+                baseId,
+                baseDisplayName,
+                variantIdPrefix,
+                variantDisplayPrefix,
+                baseTexture,
+                frameType,
+                true
+        );
     }
 }

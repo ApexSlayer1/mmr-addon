@@ -1,0 +1,7 @@
+{
+  "parent": "modular_machinery_reborn:block/blockmodel_overlay_all",
+  "textures": {
+    "bg_all": "examplemod:block/casing/stone_brick/stone_brick",
+    "ov_all": "examplemod:block/frame/arcane/arcane_overlay"
+  }
+}

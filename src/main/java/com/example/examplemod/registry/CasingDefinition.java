@@ -51,8 +51,12 @@ public record CasingDefinition(
                 ? MmrCasingAssets.OVERLAY_TRANSPARENT
                 : overlayType.texture();
 
-        String id = family.idPrefix() + "_" + (overlayType == null ? frameType.baseIdSuffix() : overlayType.idSuffix());
-        String displayName = family.displayPrefix() + " " + (overlayType == null ? frameType.baseDisplayName() : overlayType.displayName());
+        String id = overlayType == null
+                ? family.baseId()
+                : family.variantIdPrefix() + "_" + overlayType.idSuffix();
+        String displayName = overlayType == null
+                ? family.baseDisplayName()
+                : family.variantDisplayPrefix() + " " + overlayType.displayName();
 
         LinkedHashMap<String, ResourceLocation> ctmTextures = new LinkedHashMap<>();
         ctmTextures.put("center", centerTexture);
@@ -70,10 +74,13 @@ public record CasingDefinition(
             ctmTextures.put("ov_particle", frameType.ctmOverlayParticle());
             ctmTextures.put("ov_vertical", frameType.ctmOverlayVertical());
             ctmTextures.put("overlay", fixedOverlayTexture);
-
-            ResourceLocation overlayAll = generatedTexture(id, "overlay_all");
-            generatedTextures.add(new GeneratedTexture(overlayAll, List.of(frameType.itemOverlayTexture(), fixedOverlayTexture)));
-            itemOverlayTexture = overlayAll;
+            if (overlayType == null) {
+                itemOverlayTexture = frameType.itemOverlayTexture();
+            } else {
+                ResourceLocation overlayAll = generatedOverlayTexture(frameType, overlayType);
+                generatedTextures.add(new GeneratedTexture(overlayAll, List.of(frameType.itemOverlayTexture(), fixedOverlayTexture)));
+                itemOverlayTexture = overlayAll;
+            }
         } else if (overlayType != null) {
             ctmTextures.put("overlay", fixedOverlayTexture);
         }
@@ -93,8 +100,8 @@ public record CasingDefinition(
         );
     }
 
-    private static ResourceLocation generatedTexture(String id, String textureName) {
-        return ExampleMod.id("block/generated/" + id + "/" + textureName);
+    private static ResourceLocation generatedOverlayTexture(CasingFrameType frameType, CasingOverlayType overlayType) {
+        return ExampleMod.id("block/generated/frame_overlay/" + frameType.name() + "/" + overlayType.idSuffix());
     }
 
     private static ResourceLocation derivedTexture(ResourceLocation baseTexture, String suffix, ResourceLocation fallback) {

@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "examplemod:arcane_stone_brick_casing",
+    "examplemod:arcane_stone_brick_casing_firebox",
+    "examplemod:arcane_stone_brick_casing_gearbox",
+    "examplemod:arcane_stone_brick_casing_vent",
+    "examplemod:arcane_stone_brick_casing_circuitry",
+    "examplemod:arcane_sourcestone_brick_casing",
+    "examplemod:arcane_sourcestone_brick_casing_firebox",
+    "examplemod:arcane_sourcestone_brick_casing_gearbox",
+    "examplemod:arcane_sourcestone_brick_casing_vent",
+    "examplemod:arcane_sourcestone_brick_casing_circuitry",
+    "examplemod:arcane_blackstone_casing",
+    "examplemod:arcane_blackstone_casing_firebox",
+    "examplemod:arcane_blackstone_casing_gearbox",
+    "examplemod:arcane_blackstone_casing_vent",
+    "examplemod:arcane_blackstone_casing_circuitry"
+  ]
+}

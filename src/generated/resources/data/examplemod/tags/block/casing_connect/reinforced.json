@@ -1,16 +1,15 @@
 {
   "replace": false,
   "values": [
-    "modular_machinery_reborn:casing_reinforced",
-    "examplemod:stone_brick_reinforced_casing",
-    "examplemod:stone_brick_firebox_casing",
-    "examplemod:stone_brick_gearbox_casing",
-    "examplemod:stone_brick_vent_casing",
-    "examplemod:stone_brick_circuitry_casing",
-    "examplemod:spruce_planks_reinforced_casing",
-    "examplemod:spruce_planks_firebox_casing",
-    "examplemod:spruce_planks_gearbox_casing",
-    "examplemod:spruce_planks_vent_casing",
-    "examplemod:spruce_planks_circuitry_casing"
+    "examplemod:reinforced_stone_brick_casing",
+    "examplemod:reinforced_stone_brick_casing_firebox",
+    "examplemod:reinforced_stone_brick_casing_gearbox",
+    "examplemod:reinforced_stone_brick_casing_vent",
+    "examplemod:reinforced_stone_brick_casing_circuitry",
+    "examplemod:reinforced_spruce_planks_casing",
+    "examplemod:reinforced_spruce_planks_casing_firebox",
+    "examplemod:reinforced_spruce_planks_casing_gearbox",
+    "examplemod:reinforced_spruce_planks_casing_vent",
+    "examplemod:reinforced_spruce_planks_casing_circuitry"
   ]
 }

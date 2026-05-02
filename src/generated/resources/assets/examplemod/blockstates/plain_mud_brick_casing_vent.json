@@ -1,0 +1,20 @@
+{
+  "athena:loader": "modular_machinery_reborn:casing",
+  "connect_to": {
+    "type": "tag",
+    "tag": "examplemod:casing_connect/plain"
+  },
+  "ctm_textures": {
+    "center": "examplemod:block/casing/mud_brick/mud_brick_corners",
+    "empty": "examplemod:block/casing/mud_brick/mud_brick_empty",
+    "horizontal": "examplemod:block/casing/mud_brick/mud_brick_horizontal",
+    "overlay": "modular_machinery_reborn:block/overlay_vent",
+    "particle": "examplemod:block/casing/mud_brick/mud_brick",
+    "vertical": "examplemod:block/casing/mud_brick/mud_brick_vertical"
+  },
+  "variants": {
+    "": {
+      "model": "minecraft:block/air"
+    }
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "parent": "modular_machinery_reborn:block/blockmodel_overlay_all",
-  "textures": {
-    "bg_all": "examplemod:block/casing/spruce_planks",
-    "ov_all": "examplemod:block/generated/spruce_planks_firebox_casing/overlay_all"
-  }
-}

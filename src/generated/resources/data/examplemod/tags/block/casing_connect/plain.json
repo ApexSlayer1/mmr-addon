@@ -6,10 +6,15 @@
     "modular_machinery_reborn:casing_gearbox",
     "modular_machinery_reborn:casing_vent",
     "modular_machinery_reborn:casing_circuitry",
-    "examplemod:example_plain_casing",
-    "examplemod:example_firebox_casing",
-    "examplemod:example_gearbox_casing",
-    "examplemod:example_vent_casing",
-    "examplemod:example_circuitry_casing"
+    "examplemod:plain_example_casing",
+    "examplemod:plain_example_firebox",
+    "examplemod:plain_example_gearbox",
+    "examplemod:plain_example_vent",
+    "examplemod:plain_example_circuitry",
+    "examplemod:plain_mud_brick_casing",
+    "examplemod:plain_mud_brick_casing_firebox",
+    "examplemod:plain_mud_brick_casing_gearbox",
+    "examplemod:plain_mud_brick_casing_vent",
+    "examplemod:plain_mud_brick_casing_circuitry"
   ]
 }

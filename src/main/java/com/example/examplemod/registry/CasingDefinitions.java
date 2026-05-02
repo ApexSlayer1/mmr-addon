@@ -18,7 +18,7 @@ public final class CasingDefinitions {
     //
     // Quick examples:
     // `public static final CasingFrameType STEEL_FRAME = addonConnectedFrame("steel");`
-    // Expects textures under assets/examplemod/textures/block/frame/:
+    // Expects textures under assets/examplemod/textures/block/frame/steel/:
     // steel_overlay.png, steel_corners.png, steel_horizontal.png,
     // steel_particle.png, steel_vertical.png
     //
@@ -27,16 +27,17 @@ public final class CasingDefinitions {
     //
     // `addonFamilyFromFrame("stone_brick", "Stone Brick", STEEL_FRAME).color()`
     // Makes the full generated family use the controller color tint like native MMR casings.
+    // Generates ids like `steel_stone_brick_casing` and `steel_stone_brick_firebox`.
     //
     // `addonFamilyFromFrame("stone_brick", "Stone Brick", STEEL_FRAME)`
-    // Expects assets/examplemod/textures/block/casing/:
+    // Expects assets/examplemod/textures/block/casing/stone_brick/:
     // stone_brick.png, stone_brick_corners.png, stone_brick_horizontal.png,
     // stone_brick_vertical.png, optional stone_brick_empty.png
     public static final List<CasingOverlayType> OVERLAY_TYPES = List.of(
-            mmrOverlay("firebox", "Firebox Casing"),
-            mmrOverlay("gearbox", "Machine Gearbox Casing"),
-            mmrOverlay("vent", "Machine Vent Casing"),
-            mmrOverlay("circuitry", "Circuitry Casing")
+            mmrOverlay("firebox", "Firebox"),
+            mmrOverlay("gearbox", "Machine Gearbox"),
+            mmrOverlay("vent", "Machine Vent"),
+            mmrOverlay("circuitry", "Circuitry")
     );
 
     public static final CasingFrameType PLAIN_FRAME = plainFrame(
@@ -49,17 +50,15 @@ public final class CasingDefinitions {
     public static final CasingFrameType REINFORCED_FRAME = mmrFrame(
             "reinforced",
             "Reinforced Casing",
-            List.of(nativeBlock("casing_reinforced"))
+            List.of()
     );
 
+
     // Example of the shorthand for a custom frame:
-    // Textures expected under assets/examplemod/textures/block/frame/:
+    // Textures expected under assets/examplemod/textures/block/frame/arcane/:
     // arcane_overlay.png, arcane_corners.png, arcane_horizontal.png,
     // arcane_particle.png, arcane_vertical.png
-    public static final CasingFrameType ARCANE_FRAME = addonConnectedFrame(
-            "arcane",
-            List.of(nativeBlock("casing_arcane"))
-    );
+    public static final CasingFrameType ARCANE_FRAME = addonConnectedFrame("arcane");
 
     public static final List<CasingFamilyDefinition> FAMILIES = List.of(
             // Uses MMR's native plain casing texture as the base and auto-adds all shared overlays.
@@ -67,7 +66,11 @@ public final class CasingDefinitions {
             // Uses this addon's stone brick CTM textures and auto-adds all shared overlays
             // on top of the reinforced frame family.
             addonFamilyFromFrame("stone_brick", "Stone Brick", REINFORCED_FRAME),
-            addonFamilyFromFrame("spruce_planks","spruce",REINFORCED_FRAME)
+            addonFamilyFromFrame("spruce_planks","spruce",REINFORCED_FRAME),
+            addonFamilyFromFrame("stone_brick","Stone Brick",ARCANE_FRAME),
+            addonFamilyFromFrame("sourcestone_brick","Magic",ARCANE_FRAME),
+            addonFamilyFromFrame("blackstone","Blackstone",ARCANE_FRAME),
+            addonFamilyFromFrame("mud_brick","Mud Brick",PLAIN_FRAME)
     );
 
 
@@ -81,7 +84,14 @@ public final class CasingDefinitions {
             ResourceLocation baseTexture,
             CasingFrameType frameType
     ) {
-        return new CasingFamilyDefinition(idPrefix, displayPrefix, baseTexture, frameType, false);
+        return CasingFamilyDefinition.of(
+                frameType.name() + "_" + idPrefix + "_casing",
+                frameType.displayPrefix() + " " + displayPrefix + " Casing",
+                frameType.name() + "_" + idPrefix,
+                frameType.displayPrefix() + " " + displayPrefix,
+                baseTexture,
+                frameType
+        );
     }
 
     public static CasingFamilyDefinition familyFromVariant(
@@ -99,7 +109,7 @@ public final class CasingDefinitions {
 
     public static CasingFamilyDefinition addonFamily(String name, String displayName, CasingFrameType frameType) {
         String path = normalizedName(name);
-        return family(path, displayName, modBlock("casing/" + path), frameType);
+        return family(path, displayName, modBlock("casing/" + path + "/" + path), frameType);
     }
 
     public static CasingFamilyDefinition addonFamilyFromFrame(String name, CasingFrameType frameType) {
@@ -109,9 +119,9 @@ public final class CasingDefinitions {
     public static CasingFamilyDefinition addonFamilyFromFrame(String name, String displayName, CasingFrameType frameType) {
         String path = normalizedName(name);
         return familyFromVariant(
-                path + "_" + frameType.baseIdSuffix(),
-                displayName + " " + frameType.baseDisplayName(),
-                modBlock("casing/" + path),
+                frameType.name() + "_" + path + "_casing",
+                frameType.displayPrefix() + " " + displayName + " Casing",
+                modBlock("casing/" + path + "/" + path),
                 frameType
         );
     }
@@ -192,11 +202,11 @@ public final class CasingDefinitions {
                 path + "_casing",
                 title + " Casing",
                 nativeConnections,
-                modBlock("frame/" + path + "_overlay"),
-                modBlock("frame/" + path + "_corners"),
-                modBlock("frame/" + path + "_horizontal"),
-                modBlock("frame/" + path + "_particle"),
-                modBlock("frame/" + path + "_vertical")
+                modBlock("frame/" + path + "/" + path + "_overlay"),
+                modBlock("frame/" + path + "/" + path + "_corners"),
+                modBlock("frame/" + path + "/" + path + "_horizontal"),
+                modBlock("frame/" + path + "/" + path + "_particle"),
+                modBlock("frame/" + path + "/" + path + "_vertical")
         );
     }
 
@@ -206,7 +216,7 @@ public final class CasingDefinitions {
 
     public static CasingOverlayType mmrOverlay(String name, String displayName) {
         String path = normalizedName(name);
-        return new CasingOverlayType(path + "_casing", displayName, mmrBlock("overlay_" + path));
+        return new CasingOverlayType(path, displayName, mmrBlock("overlay_" + path));
     }
 
     public static CasingOverlayType addonOverlay(String name) {
@@ -215,7 +225,7 @@ public final class CasingDefinitions {
 
     public static CasingOverlayType addonOverlay(String name, String displayName) {
         String path = normalizedName(name);
-        return new CasingOverlayType(path + "_casing", displayName, modBlock("casing/overlay/" + path));
+        return new CasingOverlayType(path, displayName, modBlock("casing/overlay/" + path));
     }
 
     private static List<ResourceLocation> plainFamilyNativeConnections() {

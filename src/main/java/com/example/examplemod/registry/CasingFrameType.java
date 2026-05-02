@@ -31,4 +31,12 @@ public record CasingFrameType(
                 && ctmOverlayParticle != null
                 && ctmOverlayVertical != null;
     }
+
+    public String displayPrefix() {
+        String suffix = " Casing";
+        if (baseDisplayName.endsWith(suffix)) {
+            return baseDisplayName.substring(0, baseDisplayName.length() - suffix.length());
+        }
+        return baseDisplayName;
+    }
 }
